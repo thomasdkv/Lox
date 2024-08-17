@@ -7,9 +7,12 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
-// import java.util.Scanner;
+//import java.util.Scanner;
 
 public class Lox {
+  /**
+   * Check if there is error or not
+   */
   static boolean hadError = false;
 
   public static void main(String[] args) throws IOException {
@@ -23,6 +26,13 @@ public class Lox {
     }
   }
 
+  /**
+   * If you start jlox from the command line and give it a path to a file, it
+   * reads the file and executes it
+   * 
+   * @param path
+   * @throws IOException
+   */
   private static void runFile(String path) throws IOException {
     byte[] bytes = Files.readAllBytes(Paths.get(path));
     run(new String(bytes, Charset.defaultCharset()));
@@ -30,6 +40,13 @@ public class Lox {
       System.exit(65);
   }
 
+  /**
+   * If you want a more intimate conversation with your interpreter, you can also
+   * run it interactively. Fire up jlox without any arguments, and it drops you
+   * into a prompt where you can enter and execute code one line at a time.
+   * 
+   * @throws IOException
+   */
   private static void runPrompt() throws IOException {
     InputStreamReader input = new InputStreamReader(System.in);
     BufferedReader reader = new BufferedReader(input);
@@ -44,7 +61,11 @@ public class Lox {
     }
   }
 
+  /**
+   * @param source
+   */
   private static void run(String source) {
+
     Scanner scanner = new Scanner(source);
     List<Token> tokens = scanner.scanTokens();
 
@@ -54,14 +75,22 @@ public class Lox {
     }
   }
 
+  /**
+   * @param line    Which line in the code the error is on
+   * @param message Error message
+   */
   static void error(int line, String message) {
     report(line, "", message);
   }
 
+  /**
+   * @param line
+   * @param where
+   * @param message
+   */
   private static void report(int line, String where,
       String message) {
-    System.err.println(
-        "[line " + line + "] Error" + where + ": " + message);
+    System.err.println("[line " + line + "] Error" + where + ": " + message);
     hadError = true;
   }
 
