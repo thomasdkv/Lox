@@ -28,13 +28,11 @@ class Parser {
   }
 
   /**
-   * equality -> comparison ( ( "!=" | "==" ) comparison )* ;
-   * <br />
+   * equality -> comparison ( ( "!=" | "==" ) comparison )* ; <br />
    *
    * Let’s step through it. The first comparison nonterminal in the body
    * translates to the first call to comparison() in the method. We take that
-   * result and store it in a local variable.
-   * <br />
+   * result and store it in a local variable. <br />
    *
    * Then, the ( ... )* loop in the rule maps to a while loop. We need to know
    * when to exit that loop. We can see that inside the rule, we must first find
@@ -56,8 +54,7 @@ class Parser {
   }
 
   /**
-   * comparison -> term ( ( ">" \| ">=" | "<" | "<=" ) term )* ;
-   * <br />
+   * comparison -> term ( ( ">" \| ">=" | "<" | "<=" ) term )* ; <br />
    *
    * The grammar rule is virtually identical to {@link #equality() equality} and
    * so is the corresponding code. The only differences are the token types for
@@ -189,15 +186,15 @@ class Parser {
         return;
 
       switch (peek().type) {
-        case CLASS:
-        case FUN:
-        case VAR:
-        case FOR:
-        case IF:
-        case WHILE:
-        case PRINT:
-        case RETURN:
-          return;
+      case CLASS:
+      case FUN:
+      case VAR:
+      case FOR:
+      case IF:
+      case WHILE:
+      case PRINT:
+      case RETURN:
+        return;
       }
 
       advance();

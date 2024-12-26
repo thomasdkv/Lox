@@ -79,10 +79,8 @@ public class Lox {
     System.out.println(new AstPrinter().print(expression));
 
     /*
-     * // For now, just print the tokens.
-     * for (Token token : tokens) {
-     * System.out.println(token);
-     * }
+     * // For now, just print the tokens. for (Token token : tokens) {
+     * System.out.println(token); }
      */
   }
 
@@ -99,8 +97,7 @@ public class Lox {
    * @param where
    * @param message
    */
-  private static void report(int line, String where,
-      String message) {
+  private static void report(int line, String where, String message) {
     System.err.println("[line " + line + "] Error" + where + ": " + message);
     hadError = true;
   }

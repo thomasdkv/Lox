@@ -1,0 +1,33 @@
+# Eclipse specific files
+*.launch
+.metadata/
+*.bak
+*.tmp
+*.swp
+*.swo
+*.log
+
+# Eclipse project files
+.classpath
+.project
+.settings/
+
+# Build output
+bin/
+target/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# General backup files
+*.~*
+*.bak
+*.orig
+
+# Ignore package-lock.json if not needed for Eclipse
+package-lock.json
+
+# Eclipse plugins (optional)
+*.jar
+*.war
