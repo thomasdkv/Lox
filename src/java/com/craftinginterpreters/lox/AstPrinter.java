@@ -1,11 +1,15 @@
 package com.craftinginterpreters.lox;
 
+import com.craftinginterpreters.lox.Expr.Assign;
+import com.craftinginterpreters.lox.Expr.Logical;
+import com.craftinginterpreters.lox.Expr.Variable;
+
 class AstPrinter implements Expr.Visitor<String> {
 
   String print(Expr expr) {
     return expr.accept(this);
   }
- 
+
   @Override
   public String visitBinaryExpr(Expr.Binary expr) {
     return parenthesize(expr.operator.lexeme, expr.left, expr.right);
@@ -47,6 +51,24 @@ class AstPrinter implements Expr.Visitor<String> {
     builder.append(")");
 
     return builder.toString();
+  }
+
+  @Override
+  public String visitAssignExpr(Assign expr) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public String visitLogicalExpr(Logical expr) {
+    // TODO Auto-generated method stub
+    return null;
+  }
+
+  @Override
+  public String visitVariableExpr(Variable expr) {
+    // TODO Auto-generated method stub
+    return null;
   }
 
   public static void main(String[] args) {

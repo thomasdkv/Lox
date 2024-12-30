@@ -46,6 +46,7 @@ class Scanner {
   static {
     keywords = new HashMap<>();
     keywords.put("and", AND);
+    keywords.put("break", BREAK);
     keywords.put("class", CLASS);
     keywords.put("else", ELSE);
     keywords.put("false", FALSE);
@@ -147,11 +148,11 @@ class Scanner {
         StringBuilder sb = new StringBuilder();
         blockComemnt = true;
         System.out.println("----------Block Comment start----------");
-        while (peek() != '*' && !isAtEnd() && peekNext() != '/') {
+        while (!isAtEnd() && (peek() != '*' || peekNext() != '/')) {
           advance();
           sb.append(source.charAt(current - 1));
         }
-        System.out.println("Comment: \n" + sb.toString());
+        System.out.println("Comment: \"" + sb.toString() + "\"");
         System.out.println("----------Block Comment end----------");
       } else {
         addToken(SLASH);
