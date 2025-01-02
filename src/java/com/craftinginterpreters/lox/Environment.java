@@ -40,6 +40,11 @@ class Environment {
     throw new RuntimeError(name, "Undefined variable '" + name.lexeme + "'.");
   }
 
+  /**
+   * Define a variable with name and value
+   * @param name the name of the variable
+   * @param value the value of the variable
+   */
   void define(String name, Object value) {
     values.put(name, value);
   }
