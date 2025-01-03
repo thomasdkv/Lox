@@ -42,10 +42,29 @@ class Environment {
 
   /**
    * Define a variable with name and value
-   * @param name the name of the variable
+   * 
+   * @param name  the name of the variable
    * @param value the value of the variable
    */
   void define(String name, Object value) {
     values.put(name, value);
   }
+
+  Environment ancestor(int distance) {
+    Environment environment = this;
+    for (int i = 0; i < distance; i++) {
+      environment = environment.enclosing;
+    }
+
+    return environment;
+  }
+
+  Object getAt(int distance, String name) {
+    return ancestor(distance).values.get(name);
+  }
+
+  void assignAt(int distance, Token name, Object value) {
+    ancestor(distance).values.put(name.lexeme, value);
+  }
+
 }
